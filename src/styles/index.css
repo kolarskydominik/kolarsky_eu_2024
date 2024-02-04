@@ -3,7 +3,6 @@
 @import "tailwindcss/components.css";
 @import "tailwindcss/utilities.css";
 
-
 body {
   background-color: var(--clr-bg);
   display: flex;
@@ -11,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   color: var(--clr-text);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 
   min-height: 100vh;
   min-height: 100dvh;
@@ -24,11 +23,60 @@ main {
   display: flex;
   flex: 1;
   justify-content: center;
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
+  width: 100%;
 }
 
 .hero {
-text-align: center;
+  text-align: center;
+  max-width: 800px;
+  width: min-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 15px 32px 40px;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 600px) {
+  .hero {
+    text-align: unset;
+    width: fit-content;
+  }
+}
+
+.cta__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 1rem;
+}
+
+.avatar {
+  max-width: 200px;
+  width: 100%;
+  border-radius: 99px;
+}
+
+.avatar__wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: fit-content;
+}
+
+.available_dot {
+  background-color: rgb(34, 197, 94);
+  position: absolute;
+  left: 75%;
+  top: 90%;
+  width: 10px;
+  height: 10px;
+  border-radius: 99px;
+
+  transform: scale(1);
+  animation: pulse 2s infinite;
 }
 
 .bg__pattern {
@@ -37,21 +85,94 @@ text-align: center;
   z-index: -1;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" id="patternId" width="100%" height="100%"><defs><pattern id="a" patternUnits="userSpaceOnUse" width="60" height="60" patternTransform="scale(0.8888888888888888) rotate(0)"><rect x="0" y="0" width="100%" height="100%" fill="%23ebe6ff00"/><path d="M10 60V30m10 0v30m10 0H0V30M50 0v30m-10 0V0M30 0h30v30M30 40h30m0 10H30m0-20h30v30H30zM0 10h30m0 10H0M0 0h30v30H0z" stroke-width="1" stroke="%2354545440" fill="none"/></pattern></defs><rect width="800%" height="800%" transform="translate(0,0)" fill="url(%23a)"/></svg>');
   background-attachment: fixed;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--clr-bg-radial);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .bg__pattern::after {
+    background: var(--clr-bg-radial-desktop);
+  }
 }
 
 .tile {
-  background-color: var(--tile-bg);
+  background: var(--tile-bg);
+  background: var(--tile-bg-radial);
+
   box-shadow: var(--tile-box-shadow);
   border: var(--tile-border);
   backdrop-filter: blur(var(--tile-blur));
   border-radius: var(--tile-r);
 }
 
+a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: var(--transition-03);
+  line-height: 1;
+  vertical-align: middle;
 
-.footer_link {
+  &:hover {
+    background-color: var(--clr-white-hover);
+  }
 
   svg {
     width: 20px;
     height: 20px;
+  }
+}
+
+a.rocket {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='60px' width='60px' style='fill:black;font-size:28px;'><text y='50%'>🚀</text></svg>"),
+    auto;
+}
+
+a.unicorn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='60px' width='60px' style='fill:black;font-size:28px;'><text y='50%'>🦄</text></svg>")
+      16 0,
+    auto;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 2rem;
+
+  .footer_links__wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .footer_copyright {
+    font-size: 0.825rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    border: 1px solid rgb(34, 197, 94);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
   }
 }
