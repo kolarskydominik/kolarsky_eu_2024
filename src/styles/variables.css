@@ -1,7 +1,7 @@
 :root {
   /* * Fonts Sizes */
-  --fs-first-name: 32px;
-  --fs-last-name: 24px;
+  --fs-name: 32px;
+  --fs-surname: 24px;
   --fs-sub-heading: 24px;
 
   /* * Colors */
